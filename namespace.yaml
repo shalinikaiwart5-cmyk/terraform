@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Pod
+metadata: 
+- name: my_pod
+  namespace: this-space
+- labels: 
+   app: my_pod
+spec:
+- containers:
+   container: nginx
+   image: nginx:latest
+- Ports:
+   port: 80
+   protocol: TCP
+
+--- 
+apiVersion: v1
+Kind: Service 
+metadata:
+- name: my-service
+spec:
+ selector:
+  app: my_pod
+ Ports:
+  port: 80
+  protocol: TCP  
+
